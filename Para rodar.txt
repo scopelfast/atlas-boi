@@ -1,0 +1,20 @@
+O que eu fiz
+Criei o banco atlas_boi_db no seu Postgres local.
+Criei o usuário atlas_boi_user / Admin@123.
+Ajustei o backend/.env para a porta 5432 (não 5434).
+Removi migrations duplicadas copiadas do atlas-erp.
+Rodei migrate deploy + seed com sucesso.
+API respondendo: http://localhost:3004/api/health
+O que você faz agora
+Não precisa do Docker para desenvolver. No PowerShell:
+
+# Terminal 1 — Backend (se ainda não estiver rodando)
+cd C:\gitHub\atlas-boi\backend
+npm run dev
+# Terminal 2 — Frontend
+cd C:\gitHub\atlas-boi\frontend
+npm run dev
+Depois abra http://localhost:3000 e entre com:
+
+E-mail: admin@atlas.local
+Senha: admin123

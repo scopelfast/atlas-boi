@@ -1,0 +1,49 @@
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: atlas-boi-db
+    environment:
+      POSTGRES_USER: atlas_boi_user
+      POSTGRES_PASSWORD: Admin@123
+      POSTGRES_DB: atlas_boi_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U atlas_boi_user -d atlas_boi_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: atlas-boi-api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://atlas_boi_user:Admin%40123@postgres:5432/atlas_boi_db
+      JWT_SECRET: change-me-in-production
+      NODE_ENV: production
+      PORT: 3004
+    ports:
+      - "3004:3004"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: atlas-boi-web
+    depends_on:
+      - backend
+    environment:
+      NEXT_PUBLIC_API_URL: http://backend:3004
+    ports:
+      - "3010:3000"
+
+volumes:
+  postgres_data:

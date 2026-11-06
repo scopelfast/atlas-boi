@@ -1,0 +1,28 @@
+---
+description: Usar modal de confirmação Atlas em vez de alert/confirm nativos do browser
+globs: frontend/**/*.{tsx,ts}
+alwaysApply: false
+---
+
+# Confirmações e diálogos (Atlas Boi)
+
+Nunca use `window.confirm()`, `window.alert()` ou `window.prompt()` no frontend.
+
+Use o hook `useConfirm()` de `@/hooks/useConfirm`:
+
+```tsx
+const { confirm } = useConfirm();
+
+const ok = await confirm({
+  title: "Desativar usuário",
+  description: "Texto claro sobre a consequência da ação.",
+  confirmLabel: "Desativar",
+  cancelLabel: "Cancelar", // opcional
+  variant: "danger", // "default" | "danger" — use danger em excluir/desativar
+});
+if (!ok) return;
+```
+
+- `ConfirmProvider` já está no `app/layout.tsx` — não duplicar.
+- Para modais customizados, use `@/components/ui/dialog` (Radix).
+- Ações destrutivas: `variant: "danger"` + rótulo explícito no botão (Excluir, Desativar, Cancelar…).

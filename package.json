@@ -1,0 +1,23 @@
+{
+  "name": "atlas-boi",
+  "private": true,
+  "scripts": {
+    "demo": "node scripts/demo-public.mjs",
+    "demo:build": "npm run build --prefix frontend",
+    "demo:stop": "node scripts/demo-stop.mjs",
+    "demo:full": "node scripts/demo-full.mjs",
+    "demo:full:ngrok": "node scripts/demo-full.mjs --ngrok --fresh",
+    "demo:full:cf": "node scripts/demo-full.mjs --cloudflared --fresh",
+    "tunnel": "node scripts/tunnel-public.mjs",
+    "tunnel:ngrok": "node scripts/tunnel-public.mjs --ngrok",
+    "tunnel:cf": "node scripts/tunnel-public.mjs --cloudflared",
+    "mobile:start": "npm start --prefix mobile",
+    "mobile:android": "npm run android --prefix mobile",
+    "mobile:build:apk": "npm exec --prefix mobile eas build -p android --profile preview",
+    "mobile:build:aab": "npm exec --prefix mobile eas build -p android --profile production",
+    "postinstall": "node -e \"try{require('localtunnel')}catch(e){}\""
+  },
+  "devDependencies": {
+    "localtunnel": "^2.0.2"
+  }
+}

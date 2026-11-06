@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Atlas Design System — light */
+    --background: 220 13% 96%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 142 55% 24%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 91% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --success: 160 84% 39%;
+    --warning: 43 96% 56%;
+    --danger: 0 84% 60%;
+    --muted: 220 13% 95%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 142 55% 24%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --border: 220 14% 90%;
+    --input: 220 14% 93%;
+    --ring: 142 55% 35%;
+    --radius: 0.5rem;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+    --scrollbar-thumb: 220 9% 46% / 0.35;
+    --scrollbar-thumb-hover: 220 9% 46% / 0.55;
+  }
+
+  .dark {
+    /* Atlas Design System — dark (sidebar DNA: #0a0a0a + emerald) */
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 142 55% 32%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 142 30% 16%;
+    --secondary-foreground: 0 0% 95%;
+    --success: 160 70% 42%;
+    --warning: 43 96% 56%;
+    --danger: 0 72% 55%;
+    --muted: 0 0% 13%;
+    --muted-foreground: 0 0% 62%;
+    --accent: 142 40% 18%;
+    --accent-foreground: 142 55% 55%;
+    --destructive: 0 62% 45%;
+    --border: 0 0% 16%;
+    --input: 0 0% 13%;
+    --ring: 142 55% 35%;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.45), 0 2px 4px -2px rgb(0 0 0 / 0.35);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+    --scrollbar-thumb: 0 0% 62% / 0.35;
+    --scrollbar-thumb-hover: 0 0% 62% / 0.55;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer utilities {
+  /* Scrollbar fina — conteúdo principal (segue tema claro/escuro) */
+  .scrollbar-atlas {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--scrollbar-thumb)) transparent;
+  }
+
+  .scrollbar-atlas::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-atlas::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-atlas::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--scrollbar-thumb));
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  .scrollbar-atlas::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--scrollbar-thumb-hover));
+  }
+
+  /* Sidebar sempre escura (#0a0a0a) — thumb discreto em branco/verde */
+  .scrollbar-atlas-dark {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255 255 255 / 0.18) transparent;
+  }
+
+  .scrollbar-atlas-dark::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  .scrollbar-atlas-dark::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-atlas-dark::-webkit-scrollbar-thumb {
+    background-color: rgb(255 255 255 / 0.14);
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    background-clip: content-box;
+  }
+
+  .scrollbar-atlas-dark::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(26 92 46 / 0.85);
+  }
+}
