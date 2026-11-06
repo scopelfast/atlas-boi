@@ -39,3 +39,12 @@ coverage/
 
 # Uploads locais (fotos de minuta, etc.)
 backend/uploads/
+
+# Mobile Expo
+mobile/.expo/
+mobile/dist/
+mobile/web-build/
+mobile/ios/
+mobile/android/
+mobile/.git.bak-local-history/
+
